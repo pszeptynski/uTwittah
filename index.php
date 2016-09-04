@@ -2,6 +2,7 @@
 require_once('src/init.php');
 var_dump($_SESSION);
 
+//            $_SESSION['logged_user_id'] = "omg@pl";
 
 
 //$_SESSION['logged_user_id'] = $id
@@ -9,7 +10,7 @@ var_dump($_SESSION);
 
 if (isset($_SESSION['logged_user_id'])) {
 // jesli zalogowany to wczytaj main.php
-//header("location: main.php");
+header("location: main.php");
 } else {
     
 }
@@ -50,14 +51,14 @@ include('html/header.html');
 <div id="signup-form">
     <fieldset>
         <legend>New user? Sign up!</legend>
-        <form action="#" method="post">
+        <form action="register.php" method="post">
             <input type="text" name="username" placeholder="Username">
             <br>
             <input type="email" name="email" placeholder="E-mail">
             <br>
             <input type="password" name="password" placeholder="Password">
             <br>
-            <input type="submit" value="Log in">
+            <input type="submit" value="Sign up">
         </form>
     </fieldset>
 </div>
