@@ -80,15 +80,24 @@ class Post {
     }
 
     static public function loadAllPosts(mysqli $connection) {
-        $sql = "SELECT * FROM `posts`";
+        // load all posts in reverse order
+        $sql = "SELECT * FROM `posts` ORDER BY `id` DESC";
+        //all columns
+//        $sql = "SELECT * FROM `posts` JOIN `users` ON users.id = posts.user_id ORDER BY `posts`.id DESC";
+        // selected columns
+//          $sql = "SELECT posts.id, user_id, username, post_content, creation_date
+//                    FROM  `posts` JOIN  `users` ON users.id = posts.user_id
+//                    ORDER BY  `posts`.id DESC ";
         // Tworzymy pustą tablicę którą potem wypełnimy obiektami wczytanymi z bazy danych
         $allPosts = [];
         $result = $connection->query($sql);
         if ($result == true && $result->num_rows != 0) {
             foreach ($result as $row) {
+//                var_dump($row);
                 $loadedPost = new Post();
                 $loadedPost->id = $row['id'];
                 $loadedPost->userID = $row['user_id'];
+//                $loadedPost->username = $row['username'];
                 $loadedPost->postContent = $row['post_content'];
                 $loadedPost->creationDate = $row['creation_date'];
                 $allPosts[] = $loadedPost;

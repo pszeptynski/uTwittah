@@ -6,6 +6,7 @@
 // jesli rejestracja nieudana. wyswietl błąd
 // wyswietl formularz rejestracyjny pozwalajacy wypelnic wymagane dane
 
+require_once ('src/init.php');
 include('html/header.html');
 
 var_dump($_POST);
@@ -17,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_POST['email'] != '' &&
             $_POST['password'] != ''
     ) {
-        require_once 'src/connection.php';
         require_once 'src/User.php';
         $username = $_POST['username'];
         $email = $_POST['email'];
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } else {
             echo "Superb! You have been registered.";
             // redirect to login.php
+            $_SESSION['logged_user_id'] = $email;
             header("location: login.php");
         }
 

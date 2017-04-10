@@ -13,3 +13,4 @@
 
 // wyswietl link do rejestracji usera
 
+$_SESSION['logged_user_id'] = $email;

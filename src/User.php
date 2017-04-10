@@ -77,7 +77,7 @@ class User {
         return false;
     }
 
-    static public function loadUserById(mysqli $connection, $id) {
+    static public function loadUserByID(mysqli $connection, $id) {
         $sql = "SELECT * FROM users WHERE id=$id";
 
         $result = $connection->query($sql);
@@ -119,7 +119,7 @@ class User {
             $sql = "DELETE FROM users WHERE id=$this->id";
             $result = $connection->query($sql);
             if ($result == true) {
-                $this->id = -1; // Jako, że usnęliśmy obiekt to zmieniamy jego id na -1
+                $this->id = -1; // Jako, że usunęliśmy obiekt to zmieniamy jego id na -1
                 return true;
             }
             return false;

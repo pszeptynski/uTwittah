@@ -47,12 +47,12 @@ include('html/header.html');
         $allPosts = Post::loadAllPosts($conn);
         foreach ($allPosts as $row) {
             $userID = $row->getUserID();
-            $username = User::loadUserByID($conn, $userID);
+            $user = User::loadUserByID($conn, $userID);
 //                var_dump($username);
             echo "<tr>";
 //                var_dump($row);
             echo " <td>" . $row->getID() . "</td>";
-            echo " <td>" . $username->getUsername() . "</td>";
+            echo " <td>" . $user->getUsername() . "</td>";
             echo " <td>" . $row->getPostContent() . "</td>";
             echo " <td>" . $row->getCreationDate() . "</td>";
             echo "</tr>";
